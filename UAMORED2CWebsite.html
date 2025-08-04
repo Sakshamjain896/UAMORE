@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>UAMORE Parfums – Hologram Edition</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <style>
+:root {
+  --holo-glow1: #7cf6fa;
+  --holo-glow2: #f08bdd;
+  --holo-glow3: #6ef2c2;
+  --holo-bg: linear-gradient(135deg, #151327 55%, #212961 100%);
+  --holo-main: rgba(55, 190, 255, 0.31);
+  --holo-nav-grad: linear-gradient(100deg,#8affff80 10%,#ffbbfd44 70%,#7a6bf880 95%);
+  --holo-radius: 24px;
+  --shadow: 0 4px 32px #87eaff2d, 0 2px 14px #fff4;
+  --holo-border: 2.6px solid #81f7ff79;
+  --nav-shadow: 0 2px 20px #b06fff1c, 0 1px 9px #fff3;
+}
+html,body{
+  min-height:100vh;
+  background: var(--holo-bg);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #f2f9fb;
+  margin:0;padding:0;
+}
+body:before {
+  /* Animated hologram overlay */
+  content:'';
+  position:fixed;z-index:-1;
+  left:0;top:0;width:100vw;height:100vh;
+  background: conic-gradient(from 120deg,
+    #8affff22 0deg,
+    #fffaa0 60deg,
+    #cc79ff44 140deg,
+    #6ef2c296 200deg,
+    #8affff44 270deg,
+    #f08bdd33 300deg,
+    #8affff22 360deg);
+  animation: holo-bg 14s linear infinite;
+  opacity:.44;pointer-events:none;
+  filter: blur(80px) brightness(1.17);
+}
+@keyframes holo-bg {
+  to { filter: blur(120px) brightness(1.12) hue-rotate(360deg);}
+}
+
+header {
+  background: var(--holo-nav-grad);
+  margin:28px 2vw 18px 2vw;
+  border-radius:32px;
+  box-shadow: var(--nav-shadow);
+  min-height:66px;
+  display:flex;align-items:center;justify-content:space-between;
+  border: var(--holo-border);
+  padding: 14px 2vw 12px 2vw;
+  position:relative;backdrop-filter: blur(14px) saturate(1.15);
+}
+.lux-logo { font-weight:900; font-size:2.1em;
+  background: linear-gradient(100deg,#9bfff9 35%,#e6cfff 60%,#ffbbfd 80%,#6ef2c2);
+  background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  letter-spacing:.07em;word-spacing:.13em;text-shadow: 0 2px 8px #6ef2c2d8;
+  filter: drop-shadow(0 4px 12px #fff8);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  height: 100%;
+}
+nav a {
+  display: flex;justify-content: center;align-items:center;
+  padding: 0 26px;
+  height:48px;min-width:105px;
+  font-size:1.11em;
+  border-radius: 17px;
+  border: 1.5px solid #9bfff966;
+  background: linear-gradient(95deg,#12124e70 8%,#7fffe480 90%);
+  backdrop-filter: blur(6px) saturate(1.22);
+  box-shadow:0 2px 14px #98f6fc37;
+  color:#fff; font-weight:600;text-decoration:none;
+  letter-spacing:.022em;
+  transition:all .19s cubic-bezier(.58,1.4,.65,1.05);
+  overflow:hidden;
+  position:relative;z-index:2;
+}
+nav a.active, nav a:hover {
+  background: linear-gradient(110deg,#fffbe6e5 18%,#7cf6fa 80%,#f08bdd 97%);
+  color:#18143b; font-weight:900; box-shadow:0 2px 21px #81f7ff57;
+  border-color:#fff2;
+  text-shadow:0 2px 8px #fff7bb11;
+  transform:scale(1.085) perspective(120px) rotateY(7deg);
+}
+.nav-btn {
+  background: linear-gradient(127deg, #5a7ca0a7 30%, #3f567171 110%, #9077a177 120%);
+  color: #2c2c3c;
+  border: none;
+  border-radius: 17px;
+  padding: 10px 15px;
+  font-size: 1.2em;
+  box-shadow: 0 1px 8px #546d8a80, 0 1px 6px #575a7280;
+  margin-left: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  border: 1.4px solid #60738fa0;
+  transition: all 0.18s ease;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(110deg,#fffbe6e5 18%,#7cf6fa 80%,#f08bdd 97%);
+  color: #22222a;
+  box-shadow: 0 4px 14px #5a7eac90, 0 2px 7px #7c6b8e90;
+  border-color: #a4aacfcc;
+  transform:scale(1.085) perspective(120px) rotateY(7deg);
+}
+
+
+#cart-count {
+  display: inline-block;
+  min-width: 22px;
+  height: 22px;
+  line-height: 22px;
+  padding: 0 8px;
+  font-size: 0.78em;
+  font-weight: 700;
+  color: #7cf6fa; /* holographic blue */
+  background: rgba(29, 24, 52, 0.7); /* semi-transparent dark */
+  border-radius: 14px;
+  border: 1.8px solid #7cf6faaa; /* glowing hologram border */
+  box-shadow:
+      0 0 6px #7cf6fabb,
+      inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+  transition: all 0.3s ease;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-container {
+  position: fixed;
+  top: 60px;
+  right: 12px;
+  width: 320px;
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(28, 24, 52, 0.95), rgba(53, 40, 99, 0.85));
+  border-radius: 28px;
+  border: 3px solid #7cf6faaa;
+  box-shadow: 0 0 32px #7cf6fa, 0 0 16px #db5a91;
+  z-index: 520;
+  color: #e0f0ff;
+  backdrop-filter: blur(9px);
+  font-size: 0.9em;
+}
+
+.cart-container h3 {
+  margin-top: 0;
+  font-weight: 700;
+  text-align: center;
+  color: #7cf6fa;
+  text-shadow: 0 0 12px #7cf6fa;
+}
+
+.cart-container .cart-items {
+  margin-top: 12px;
+}
+
+.cart-container .cart-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #444a66;
+}
+
+.cart-container .cart-total {
+  font-weight: 700;
+  padding-top: 10px;
+  border-top: 2px solid #7cf6fa44;
+  text-align: right;
+  color: #aadfff;
+  font-size: 1.1em;
+}
+
+.cart-container .checkout-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 14px 0;
+  background: linear-gradient(95deg, #7cf6fa, #db5a91);
+  border-radius: 18px;
+  border: none;
+  cursor: pointer;
+  color: #191933;
+  font-weight: 800;
+  font-size: 1.15em;
+  box-shadow: 0 0 20px #db5a91, 0 0 30px #7cf6fa;
+  transition: background 0.3s ease;
+}
+.cart-container .checkout-btn:hover {
+  background: linear-gradient(95deg, #db5a91, #7cf6fa);
+  color: #222f33;
+}
+
+
+main { max-width:1100px; margin:32px auto; position:relative; z-index:3; padding:2vw;}
+.hero {
+  background: linear-gradient(118deg,#262e39cc 78%,#5dc7ffe0 102%);
+  border-radius:var(--holo-radius);
+  box-shadow: 0 2px 50px #7cf6fa40, 0 6px 60px #d7aaff3a, 0 3px 19px #fff3;
+  display:flex;align-items:center;justify-content:space-between;gap:60px;
+  min-height:298px;margin-bottom:34px;
+  padding:66px 6vw 66px 7vw;
+  perspective:1500px;overflow:visible;position:relative;
+  border: var(--holo-border);
+  backdrop-filter: blur(12px) saturate(1.16);
+}
+.hero-bottle {flex:1 1 380px;display:flex;justify-content:center;align-items:end;position:relative;}
+.bottle-3d {
+  width:220px;height:236px;z-index:5;position:relative;
+  background-image: url('https://product.hstatic.net/200000763891/product/1800_x_1800_hinh_hop_chai_50ml_34e0cafb53354eedb865692ef67dd9ef_master.png');
+  background-size:contain;background-repeat:no-repeat;background-position:center;
+  border-radius:63% 42% 41% 70%/56% 68% 68% 46%;
+  box-shadow: 0 16px 90px #7cf6fa88,0 7px 18px #324fff50;
+  border:3.9px solid #8affff44;backdrop-filter: blur(9px);
+  animation: holoFloat 5.7s ease-in-out infinite alternate;
+  filter: drop-shadow(0 8px 22px #f08bdd88)  brightness(1.08) contrast(1.19) saturate(1.04);
+  transition:filter .25s,transform .5s;
+}
+.bottle-3d:after {
+  content:"";position:absolute;left:16px;top:18px;width:60%;height:30%;
+  pointer-events:none;border-radius:60%;opacity:.44;
+  background:linear-gradient(120deg,#7cf6fa55 40%,#fffbe6cc 89%,transparent 89%);
+  filter:blur(8px);
+}
+@keyframes holoFloat {
+  0%{transform:rotateZ(-2deg) scale(1.12) translateY(0);}
+  100%{transform:rotateZ(9deg) scale(1.19) translateY(-12px);}
+}
+.bottle-3d:hover { filter:brightness(1.18) hue-rotate(35deg) drop-shadow(0 10px 60px #7cf6faa0);}
+.hero-text {
+  color:#fff;flex:2 2 420px;text-shadow:0 1px 8px #6ef2c231;
+  background: linear-gradient(91deg,#fffbe6c1 0%,#fff 80%,#7cf6fa22 100%);
+  background-clip:text;-webkit-background-clip:text;color:transparent;
+  -webkit-text-fill-color:transparent;filter:saturate(1.26);
+}
+.hero-title {font-size:2.5em;font-weight:900;letter-spacing:.08em;margin-bottom:13px;}
+.hero-title span { color:#10e4eb; text-shadow: 0 4px 12px #6a8cc3;}
+.hero-sub { font-size:1.17em;color:#fffbe8;line-height:1.68;margin-top:11px;font-weight:500; background: none; text-shadow: 0 2px 8px #fff;
+  -webkit-text-fill-color:unset;color:#fffbe8; }
+.hero-btn {
+   margin-top:38px;
+   font-size:1.21em;
+   font-weight:800;
+   padding:14px 48px;
+   border-radius:19px;
+   border:none;
+   box-shadow:0 2px 25px #88e3fdaa,0 1.5px 12px #fff6;
+   background:linear-gradient(97deg,#fffbe6c1 0%,#7cf6fa 90%,#f08bdd44 99%);
+   color:#f3f6ee;
+   transition:all .19s;
+   cursor:pointer; 
+   position:relative;
+   overflow:hidden;
+   letter-spacing:.06em;
+   border:1.6px solid #7cf6fa99;
+   /* -webkit-text-fill-color: unset; ← ADD THIS! */
+}
+
+.hero-btn:hover {
+  background:linear-gradient(101deg,#7cf6fa 22%,#fffcff 99%);
+  /* color:#212840 !important;
+  -webkit-text-fill-color: unset !important; */
+  box-shadow:0 8px 34px #7cf6fa73, 0 2px 9px #f08bdd5c;
+  border:1.7px solid #fffbe6;
+}
+/* Holographic glowing Explore button */
+.holo-btn {
+  position: relative;
+  display: inline-block;
+  margin-top: 38px;
+  padding: 16px 52px 16px 42px;
+  font-size: 1.22em;
+  font-weight: 900;
+  color: #273419;
+  background: linear-gradient(100deg, #b2fff7 15%, #7cf6fa 48%, #f08bdd 100%);
+  border: 2.5px solid #7cf6fa;
+  border-radius: 20px 80px 26px 80px/34px 48px 34px 48px;
+  box-shadow:
+    0 2px 24px #85fff767,
+    0 4px 44px #f08bdd28,
+    0 1px 4px #7cf6fa;
+  letter-spacing: .05em;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background .3s, box-shadow .3s, color .19s;
+  isolation: isolate;
+  user-select: none;
+  outline: none;
+}
+
+.holo-btn::before {
+  content: "";
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: conic-gradient(
+    from 110deg,
+    #f09503ee 12%, #f80439 39%, #350bf4 69%, #4df002 100%, #04c3e5ee 100%
+  );
+  opacity: 0.36;
+  filter: blur(21px);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity .3s;
+  border-radius: inherit;
+}
+
+.holo-btn .holo-btn-text {
+  position: relative;
+  z-index: 1;
+  text-shadow:
+    0 2px 9px #fff7bb33,
+    0 1.5px 8px #89eaffa8;
+  background: linear-gradient(91deg, #fffbe6 18%, #7cf6fa 72%, #f08bdd 99%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.holo-btn:hover,
+.holo-btn:focus {
+  background: linear-gradient(96deg, #fffbe6 8%, #7cf6fa 78%, #f08bdd 100%);
+  color: #18143b;
+  box-shadow:
+    0 8px 45px #7cf6fa99,
+    0 4px 44px #f08bdd44,
+    0 1px 4px #7cf6fa;
+}
+
+.holo-btn:hover::before,
+.holo-btn:focus::before {
+  opacity: 0.60;
+}
+
+
+#about {
+  padding:29px;
+  background: linear-gradient(119deg,#30355399 75%,#6ef2c236 100%);
+  border-radius:calc(var(--holo-radius) + 12px);
+  margin:36px 2vw 42px 2vw;
+  box-shadow: 0 6px 36px #f08bdd38, 0 1.3px 12px #7cf6fa49;
+  color:#fffbe9;font-size:1.16em;
+  border:var(--holo-border);
+  backdrop-filter: blur(12px) brightness(1.16);
+  text-shadow:0 2px 24px #7cf6fa44;
+}
+#about strong {color:#7cf6fa;}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap:33px;perspective:800px;
+}
+.product-card {
+  background:linear-gradient(134deg,#08c4e5 53%,#fffbe61f 99%);
+  border-radius:var(--holo-radius);
+  box-shadow:var(--shadow);
+  padding:25px 13px 18px 13px;min-height:326px;
+  transition:all .23s cubic-bezier(.62,1.42,.62,1.05);
+  border:var(--holo-border);position:relative;overflow:hidden;
+  transform-style:preserve-3d;z-index:2;
+  backdrop-filter: blur(9px) brightness(1.10);
+}
+.product-card:hover {
+  transform: perspective(640px) scale3d(1.11,1.09,1.08) rotateY(10deg);
+  box-shadow: 0 18px 70px #81f7ffa0,0 4.5px 33px #f08bdd;
+  background:linear-gradient(109deg,#8affffcc 21%,#f08bdd66 100%);
+  border-color:#fffbe6c7;
+  /* filter: brightness(1.15) hue-rotate(38deg) drop-shadow(0 2px 18px #fae9f6cd); */
+  z-index:10;
+}
+.prod-img {
+  width:100%;max-width:170px;height:142px;object-fit:cover;
+  border-radius:16px 16px 14px 14px;
+  box-shadow:0 3px 18px #ffbbfd47;
+  margin-bottom:14px;
+  border:2.8px solid #7cf6faaf;
+  transition:border .16s, box-shadow .15s;
+  background:linear-gradient(101deg,#fffbe699 40%,#f08bdd22 89%);
+}
+.product-card:hover .prod-img { border:2.8px solid #fffbe6;box-shadow:0 8px 40px #7cf6fa;}
+.prod-title {font-size:1.11em;font-weight:800;color:#f04268;}
+.prod-price {color:#fffbe6;font-weight:700;font-size:1.13em;margin:9px 0;}
+.prod-addbtn {
+  margin-top:13px;
+  background:linear-gradient(97deg,#fffbe6 0%,#7cf6fa 87%,#f08bdd 99%);
+  color:#2a1439;
+  border:none;padding:8.5px 26px;
+  border-radius:12px;
+  font-weight:700;font-size:1.04em;cursor:pointer;
+  border:1.2px solid #7cf6fa99;box-shadow:0 2px 11px #7cf6fa33;
+  transition:all .17s;
+}
+.prod-addbtn:hover {background:linear-gradient(99deg,#7cf6fa,#fffbe6 75%);color:#212840;transform:scale(1.09);}
+#prod-filter {margin:0 0 17px 0;display:flex;gap:16px;align-items:center;}
+#search-box, #cat-filter, #price-filter {
+  padding:12px 13px; border-radius:16px; border:1.5px solid #7cf6fa5d;
+  background:rgba(67,78,158,0.24); color:#fff; font-size:1.01em; box-shadow:0 2px 7px #f08bdd4c; outline:none;
+  margin-bottom:8px;
+}
+#search-box:focus, #cat-filter:focus, #price-filter:focus { border-color: #7cf6fa; background:#23246e;}
+/* Modals - Glass + Holo Lights */
+#cart-modal, #login-modal, #admin-modal, #prod-modal, #checkout-modal, #signup-modal {
+  position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:300;
+  background: rgba(41, 83, 98, 0.22);
+  display:none;align-items:center;justify-content:center;
+  transition:background .41s cubic-bezier(.73, .13, .52, 1.4);
+}
+/* Center form content inside modals */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #7cf6fa;
+  padding: 30px;
+  border: 2px solid #7cf6fa;
+  background: #212961;
+  border-radius: 24px;
+}
+
+.modal-content form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #7cf6fa;
+  border-radius: 16px;
+  padding: 20px;
+  background: rgba(38, 46, 57, 0.85);
+}
+
+.modal-content h3,
+.modal-content .form-label,
+.modal-content input,
+.modal-content button {
+  width: 100%;
+  text-align: center; /* For headings and labels */
+  margin-left: 0;
+  margin-right: 0;
+}
+.form-input {
+  text-align: left; /* If you want text left in fields, remove for center */
+}
+.form-btn, .checkout-btn {
+  align-self: center;
+}
+
+@keyframes modalIn{0%{transform:perspective(650px)translateY(110px)rotateX(19deg)scale(.91);opacity:0;}90%{transform:scale(1.03);}100%{transform:none;opacity:1;}}
+.close {position:absolute;right:16px;top:16px;font-size:1.23em;cursor:pointer;color:#7cf6fa;}
+.checkout-btn, .form-btn {
+  background:linear-gradient(97deg,#7cf6fa 0%,#fffbe6 87%);
+  color:#18143b; font-weight:800; font-size:1.09em;cursor:pointer;
+  padding:10px 25px; border-radius:13px;border:none;
+  box-shadow:0 2px 10px #7cf6fa56;
+  letter-spacing:.02em;transition:all .15s;
+}
+.checkout-btn:hover, .form-btn:hover { background:linear-gradient(109deg,#fffbe6,#7cf6fa 88%); color:#262e39;}
+.form-input { width:100%; margin:13px 0 8px 0; padding:9px 13px; border-radius:8px; border:1.4px solid #7cf6fa; background:#262e39;}
+#cart-table th, #cart-table td { padding:7px 9px; text-align:left; color:#fffbe6;}
+.admin-title {font-size:1.19em;color:#7cf6fa;margin-bottom:13px;}
+/* Responsive */
+@media (max-width:950px){
+  main{padding:0vw;}
+  .hero{padding:27px 2vw;flex-direction:column;align-items:center;gap:19px;}.hero-bottle{margin:0 auto;}
+  .bottle-3d{width:115px;height:120px;}
+}
+@media (max-width:600px){
+  .hero{padding:13px 1vw; border-radius:19px;}
+  .hero-title{font-size:1.14em;}
+  .bottle-3d{width:80px;height:80px;}
+}
+  </style>
+</head>
+<body>
+<header>
+  <span class="lux-logo">UAMORE Perfumes</span>
+  <nav>
+    <a href="#" class="active" onclick="showSection('home',this)">Home</a>
+    <a href="#" onclick="showSection('products',this)">Perfumes</a>
+    <a href="#" onclick="showSection('about',this)">About</a>
+    <a href="#" onclick="showSection('admin',this)">Admin</a>
+    <button class="nav-btn" onclick="showCart()">🛒 <span id="cart-count">0</span></button>
+    <button class="nav-btn" onclick="showLogin()">👤</button>
+  </nav>
+</header>
+<main>
+  <!-- HOME -->
+  <section id="home-section">
+ <section id="home-section">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="hero-title">
+        Awaken Your <span>Senses</span> with UAMORE
+      </div>
+      <div class="hero-sub">
+        Discover sophisticated scents captured in radiant glass.<br>
+        Each UAMORE fragrance is a journey—chic, rare, and unforgettable.
+      </div>
+    </div>
+    <!-- New button placed here, outside hero-text for visibility -->
+    <button class="holo-btn" onclick="showSection('products', this)">
+      <span class="holo-btn-text">Explore Parfumes →</span>
+    </button>
+
+    <div class="hero-bottle">
+      <div class="bottle-3d"></div>
+    </div>
+  </div>
+</section>
+
+  </section>
+  <!-- ABOUT -->
+  <section id="about-section" style="display:none;">
+    <div id="about">
+  <strong>About the Brand – UAMORE</strong><br><br>
+  UAMORE is not just a perfume brand—it is an invitation to experience scent as living light. Founded by visionaries passionate about craftsmanship and individuality, UAMORE aims to capture feelings, memories, and dreams in every luminous bottle. Each fragrance is carefully composed using a blend of rare botanicals, precious resins, and natural extracts sourced ethically from around the world.
+  <br><br>
+  Our design philosophy celebrates both modernity and tradition. Every UAMORE flacon blends futuristic, art-inspired glass with classic Parisian elegance. The holographic bottle reflects changing light and mood, symbolizing how fragrance can express every facet of who you are.
+  <br><br>
+  <span style="color:#7cf6fa;">
+    We believe luxury should be both bold and responsible: our perfumes are cruelty-free, vegan, and thoughtfully packaged, with sustainability at the heart of each creation. Whether you seek a signature scent to inspire confidence, a rare collectible for your wardrobe, or a transformative gift, UAMORE delivers an unforgettable sensory journey from the very first spray.
+  </span>
+  <br><br>
+  <i>Immerse yourself in the iridescent world of UAMORE—where every moment becomes a memory, and every scent is designed for those who dare to sparkle.</i>
+</div>
+
+  </section>
+  <!-- PERFUME GALLERY -->
+  <section id="products-section" style="display:none;">
+    <h2 class="section-title" style="color:#7cf6fa;text-shadow:0 3px 16px #7cf6fa99;">Perfume Gallery</h2>
+    <div id="prod-filter" style="margin-bottom:16px">
+      <input type="search" id="search-box" placeholder="Search scents..."/>
+      <select id="cat-filter"><option value="">All Types</option></select>
+      <select id="price-filter">
+        <option value="">All Prices</option>
+        <option value="0-1999">Below ₹2,000</option>
+        <option value="2000-4999">₹2,000 - ₹4,999</option>
+        <option value="5000-10000">₹5,000+</option>
+      </select>
+    </div>
+    <div class="product-grid" id="product-list"></div>
+  </section>
+  <!-- ADMIN -->
+  <section id="admin-section" style="display:none;">
+    <div id="admin-panel">
+      <div class="admin-title">Admin Dashboard</div>
+      <div id="admin-auth" style="margin-bottom:16px;">
+        <input type="password" id="admin-pass" placeholder="Enter admin password" class="form-input"/>
+        <button class="form-btn" onclick="adminLogin()">Login</button>
+      </div>
+      <div class="admin-title">Admin Dashboard</div>
+<div style="color:#7cf6fa;font-size:1.09em;max-width:580px;margin-bottom:14px;">
+  Welcome to the <strong>UAMORE Parfums Admin Portal</strong>.<br><br>
+  As a guardian of our luxury experience, you have the special ability to shape the collection, track inventory, and ensure every scent offered is nothing short of extraordinary. Use this dashboard to add new perfume releases, curate product details, and maintain the highest standard of service for every UAMORE client.<br><br>
+  <span style="color:#b6ffe7;">
+    Please keep your admin credentials confidential—site integrity and customer trust depend on your discretion. Features such as order monitoring, analytics, and personalized recommendations are available. You’re not just managing products; you’re curating dreams.
+  </span>
+  <br><br>
+  <i>Thank you for leading UAMORE’s pursuit of elegance, innovation, and unforgettable fragrance experiences, both online and beyond.</i>
+</div>
+
+      <div id="admin-stats" style="display:none;">
+        <b>Perfumes:</b>
+        <ul class="admin-list" id="admin-products"></ul>
+        <button class="form-btn" onclick="addProductPrompt()">+ Add Perfume</button>
+        <div style="margin:10px 0 0 0"><b>Orders (demo)</b>: Coming soon</div>
+      </div>
+    </div>
+  </section>
+</main>
+<!-- CART MODAL -->
+<div id="cart-modal"><div class="modal-content">
+  <span class="close" onclick="closeCart()">✖</span>
+  <h3>Your Cart</h3>
+  <table id="cart-table"></table>
+  <div style="margin:10px 0 7px 0; font-weight:600;color:#fff">Total: ₹<span id="cart-total">0</span></div>
+  <button class="checkout-btn" onclick="checkout()">Checkout</button>
+</div></div>
+<!-- CHECKOUT MODAL -->
+<div id="checkout-modal" style="display:none;"><div class="modal-content">
+  <span class="close" onclick="closeCheckout()">✖</span>
+  <h3>Checkout</h3>
+  <form id="checkout-form" onsubmit="handleCheckout(event)">
+    <div class="form-label">Shipping Address</div>
+    <input type="text" class="form-input" required placeholder="Address"/>
+    <div class="form-label">Payment Info</div>
+    <input type="text" class="form-input" placeholder="Card Number" required/>
+    <input type="text" class="form-input" placeholder="Name on Card" required/>
+    <button class="form-btn" style="width:100%;margin-top:18px;">Pay Now</button>
+    <div style="font-size:.93em;color:#ffe;margin-top:4px;">(* Demo only, no real payment processed)</div>
+  </form>
+</div></div>
+<!-- LOGIN MODAL -->
+<div id="login-modal"><div class="modal-content" style="min-width:330px;">
+  <span class="close" onclick="closeLogin()">✖</span>
+  <h3 style="color:#7cf6fa">User Login</h3>
+  <form id="login-form" onsubmit="handleLogin(event)">
+    <div class="form-label">Email</div>
+    <input type="email" class="form-input" required id="login-email"/>
+    <div class="form-label">Password</div>
+    <input type="password" class="form-input" required id="login-pw"/>
+    <div style="margin:10px 0;font-size:.92em">New user? <a href="#" onclick="showSignup()" style="color:#7cf6fa">Sign Up</a></div>
+    <button class="form-btn">Login</button>
+  </form>
+</div></div>
+<!-- SIGNUP MODAL -->
+<div id="signup-modal"><div class="modal-content" style="min-width:330px;">
+  <span class="close" onclick="closeSignup()">✖</span>
+  <h3 style="color:#7cf6fa">Create Account</h3>
+  <form id="signup-form" onsubmit="handleSignup(event)">
+    <div class="form-label">Name</div>
+    <input type="text" class="form-input" required id="signup-name"/>
+    <div class="form-label">Email</div>
+    <input type="email" class="form-input" required id="signup-email"/>
+    <div class="form-label">Password</div>
+    <input type="password" class="form-input" required id="signup-pw"/>
+    <button class="form-btn">Sign Up</button>
+  </form>
+</div></div>
+<!-- PRODUCT MODAL -->
+<div id="prod-modal"><div class="modal-content" id="prod-modal-content"></div></div>
+<script>
+  function validateEmail(email) {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+  return re.test(String(email).toLowerCase());
+}
+
+function validateLoginForm(email, password) {
+  let errors = [];
+  if (!email || !validateEmail(email)) errors.push("Please enter a valid email.");
+  if (!password || password.length < 6) errors.push("Password must be at least 6 characters.");
+  return errors;
+}
+
+function validateSignupForm(name, email, password) {
+  let errors = [];
+  if (!name || name.trim().length < 2) errors.push("Please enter a valid name.");
+  if (!email || !validateEmail(email)) errors.push("Please enter a valid email.");
+  if (!password || password.length < 6) errors.push("Password must be at least 6 characters.");
+  return errors;
+}
+
+function handleLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-pw').value.trim();
+
+  let errors = validateLoginForm(email, password);
+  if (errors.length > 0) {
+    alert(errors.join("\n"));
+    return;
+  }
+
+  let user = users.find(u => u.email === email && u.pw === password);
+  if (user) {
+    currentUser = user;
+    closeLogin();
+    alert("Welcome, " + user.name + "!");
+  } else {
+    alert("Invalid login credentials.");
+  }
+}
+function handleSignup(e) {
+  e.preventDefault();
+  const name = document.getElementById('signup-name').value.trim();
+  const email = document.getElementById('signup-email').value.trim();
+  const password = document.getElementById('signup-pw').value.trim();
+
+  let errors = validateSignupForm(name, email, password);
+  if (errors.length > 0) {
+    alert(errors.join("\n"));
+    return;
+  }
+  if (users.some(u => u.email === email)) {
+    alert("Email already registered.");
+    return;
+  }
+  users.push({ name, email, pw: password });
+  alert("Signed up successfully! Please log in.");
+  closeSignup();
+  showLogin();
+}
+
+
+const CATEGORIES = ["Eau de Parfum", "Eau de Toilette", "Unisex", "Extrait", "Limited Edition"];
+let products = [
+  {id:1, title:'La Nuit Mystique', price:5590, cat:"Eau de Parfum", img:'https://product.hstatic.net/200000763891/product/1800_x_1800_hinh_hop_chai_50ml_34e0cafb53354eedb865692ef67dd9ef_master.png', desc:"Embrace the night with notes of blackcurrant, amber, and velvet sandalwood."},
+  {id:2, title:'Ciel d’Or', price:8690, cat:"Extrait", img:'https://d2r9epyceweg5n.cloudfront.net/stores/001/108/127/products/ciel-perfume-byb1-ab9a62910e11936a1c15921805741093-1024-1024.png', desc:"A radiant bouquet of neroli, golden musk, and white iris wrapped in sunlit vanilla."},
+  {id:3, title:'Azzurro Verde', price:3999, cat:"Unisex", img:'https://m.media-amazon.com/images/I/81IOLAIGEqL._UF1000,1000_QL80_.jpg', desc:"Crisp fig leaf, blue cedar, and oceanic florals—vibrant, fresh, shared."},
+  {id:4, title:'Rose Électrique', price:4999, cat:"Eau de Toilette", img:'https://m.media-amazon.com/images/I/517zje73SAL._UF1000,1000_QL80_.jpg', desc:"High-voltage rose and pink pepper with a sparkle of lemon and white woods."},
+  {id:5, title:'Noir Soleil', price:10490, cat:"Limited Edition", img:'https://down-br.img.susercontent.com/file/br-11134207-7qukw-liti1z3vtpj39f', desc:"Opulent oud, black tea, and golden saffron—intense luxury, numbered flacon."}
+];
+let cart=[], users=[{email:'demo@uamore.com',pw:'password',name:'Demo User'}], currentUser=null, adminLogged=false;
+
+function showSection(id,el) {
+  document.getElementById('home-section').style.display='none';
+  document.getElementById('about-section').style.display='none';
+  document.getElementById('products-section').style.display='none';
+  document.getElementById('admin-section').style.display='none';
+  let map = {home:'home-section',about:'about-section',products:'products-section',admin:'admin-section'};
+  if(map[id]) document.getElementById(map[id]).style.display='block';
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  if(el && el.tagName==="A") el.classList.add('active');
+  if(id==='products'){renderProducts();populateCatFilter();}
+  if(id==='admin'){populateAdmin();}
+}
+function showCart(){ renderCart();document.getElementById('cart-modal').style.display='flex';}
+function closeCart(){ document.getElementById('cart-modal').style.display='none';}
+function showLogin(){ document.getElementById('login-modal').style.display='flex';}
+function closeLogin(){ document.getElementById('login-modal').style.display='none';}
+function showSignup(){ document.getElementById('login-modal').style.display='none';document.getElementById('signup-modal').style.display='flex';}
+function closeSignup(){ document.getElementById('signup-modal').style.display='none';}
+function showCheckout(){ document.getElementById('checkout-modal').style.display='flex';}
+function closeCheckout(){ document.getElementById('checkout-modal').style.display='none';}
+function showProdModal(idx){
+  let prod = products.find(p=>p.id==idx);
+  if(!prod)return;
+  let out = `<span class="close" onclick="document.getElementById('prod-modal').style.display='none';">✖</span>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;">
+      <img src="${prod.img}" style="width:180px;border-radius:16px;box-shadow:0 2px 28px #8affffb6;transform:perspective(410px) rotateY(-12deg);" alt="${prod.title}"/>
+      <div style="flex:1 1 180px;">
+        <b style="font-size:1.29em;color:#7cf6fa;text-shadow:0 2px 11px #fff1afdb">${prod.title}</b><br>
+        <span style="color:#fffbe6;">${prod.cat}</span><br>
+        <span style="color:#fffbe6;">${prod.desc}</span><br><br>
+        <span style="font-weight:800;color:#f08bdd;font-size:1.15em">₹${prod.price}</span>
+        <button class="prod-addbtn" onclick="addToCart(${prod.id});document.getElementById('prod-modal').style.display='none';">Add to Cart</button>
+      </div>
+    </div>`;
+  document.getElementById('prod-modal-content').innerHTML=out;
+  document.getElementById('prod-modal').style.display='flex';
+}
+document.getElementById('prod-modal').onclick=e=>{if(e.target===e.currentTarget) e.target.style.display='none';};
+document.getElementById('cart-modal').onclick=e=>{if(e.target===e.currentTarget) e.target.style.display='none';};
+document.getElementById('login-modal').onclick=e=>{if(e.target===e.currentTarget) e.target.style.display='none';};
+document.getElementById('signup-modal').onclick=e=>{if(e.target===e.currentTarget) e.target.style.display='none';};
+document.getElementById('checkout-modal').onclick=e=>{if(e.target===e.currentTarget) e.target.style.display='none';};
+
+/* Product Listing and 3D Card Interactivity */
+function renderProducts(){
+  let kw = document.getElementById('search-box').value.toLowerCase();
+  let selCat = document.getElementById('cat-filter').value;
+  let selPrice = document.getElementById('price-filter').value;
+  let out = "";
+  let prods = products.filter(p=>{
+    let match = (!kw || p.title.toLowerCase().includes(kw) || p.desc.toLowerCase().includes(kw));
+    if(selCat) match&=(p.cat===selCat);
+    if(selPrice){
+      let [min,max]=selPrice.split('-').map(Number);
+      if(min && p.price<min)return false;
+      if(max && p.price>max)return false;
+    }
+    return match;
+  });
+  if(!prods.length) out = `<div style='margin:44px;text-align:center;color:#fffbe6;font-size:1.18em'>No luxury scents found.</div>`;
+  for(let p of prods) out += `
+    <div class="product-card" tabindex="0" onclick="showProdModal(${p.id})">
+      <img class="prod-img" src="${p.img}" alt="${p.title}"/>
+      <div class="prod-title">${p.title}</div>
+      <div style="color:#fffcc6;font-size:.99em;margin:7px 0 0px 0;">${p.cat}</div>
+      <div class="prod-price">₹${p.price}</div>
+      <button class="prod-addbtn" onclick="event.stopPropagation();addToCart(${p.id});">Add to Cart</button>
+    </div>`;
+  document.getElementById('product-list').innerHTML=out;
+  setTimeout(attachCard3DTilt, 16);
+}
+function attachCard3DTilt() {
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.onmousemove = e => {
+      let r = card.getBoundingClientRect();
+      let x = e.clientX - r.left - r.width/2, y = e.clientY - r.top - r.height/2;
+      card.style.transform = `perspective(520px) rotateY(${x/18}deg) rotateX(${-y/19}deg) scale3d(1.13,1.09,1.07)`;
+    }
+    card.onmouseleave = e => card.style.transform='';
+    card.onblur = card.onmouseleave;
+  });
+}
+function populateCatFilter(){
+  let el=document.getElementById('cat-filter');
+  el.innerHTML = "<option value=''>All Types</option>";
+  [...new Set(products.map(p=>p.cat))].forEach(c=>{
+    el.innerHTML += `<option value="${c}">${c}</option>`;
+  });
+}
+document.getElementById('search-box').oninput=renderProducts;
+document.getElementById('cat-filter').onchange=renderProducts;
+document.getElementById('price-filter').onchange=renderProducts;
+function addToCart(id){
+  let prod = products.find(p=>p.id==id);
+  if(!prod)return;
+  let item = cart.find(c=>c.id==id);
+  if(item) item.qty+=1;
+  else cart.push({id:prod.id, title:prod.title, price:prod.price, qty:1});
+  updateCartIcon();
+  let el = document.getElementById('cart-count');
+  el.animate([{transform:'scale(1.2)',background:'#7cf6fa44',color:'#262e39'},{transform:'',background:'',color:''}],{duration:140});
+}
+function updateCartIcon(){
+  let c = cart.reduce((a,b)=>a+b.qty,0);
+  document.getElementById('cart-count').textContent = c;
+}
+function renderCart(){
+  let out = "<tr><th>Perfume</th><th>Qty</th><th>Price</th><th></th></tr>";
+  for(let item of cart){
+    out+= `<tr>
+      <td>${item.title}</td>
+      <td><input type="number" min="1" style="width:46px" value="${item.qty}" onchange="updateQty(${item.id},this.value)"/></td>
+      <td>₹${item.price*item.qty}</td>
+      <td><span style="cursor:pointer;color:#7cf6fa" onclick="removeCart(${item.id})">✖</span></td>
+      </tr>`;
+  }
+  document.getElementById('cart-table').innerHTML=out;
+  document.getElementById('cart-total').textContent=cart.reduce((a,b)=>a+b.price*b.qty,0)
+}
+function updateQty(id,qty){ let item=cart.find(i=>i.id==id); if(item){item.qty=Number(qty);updateCartIcon();renderCart();}}
+function removeCart(id){cart=cart.filter(i=>i.id!==id);updateCartIcon();renderCart();}
+function checkout(){
+  if(cart.length===0){alert("Cart is empty.");return;}
+  document.getElementById('checkout-modal').style.display='flex';
+}
+function handleCheckout(e){
+  e.preventDefault();
+  alert("Order placed! (demo only)");
+  cart=[]; updateCartIcon();
+  closeCheckout(); closeCart();
+}
+function handleLogin(e){
+  e.preventDefault();
+  let em = document.getElementById('login-email').value.trim();
+  let pw = document.getElementById('login-pw').value.trim();
+  let u = users.find(x=>x.email===em && x.pw===pw);
+  if(u){
+    currentUser = u;
+    closeLogin();
+    alert("Welcome, "+u.name+"!");
+  } else{
+    alert("Invalid details.");
+  }
+}
+function handleSignup(e){
+  e.preventDefault();
+  let name = document.getElementById('signup-name').value.trim();
+  let em = document.getElementById('signup-email').value.trim();
+  let pw = document.getElementById('signup-pw').value.trim();
+  if(users.some(x=>x.email===em)){alert("Email already registered.");return;}
+  let u = {name, email:em, pw};
+  users.push(u);
+  alert("Signed up. Please login.");
+  closeSignup(); showLogin();
+}
+function adminLogin(){
+  let pw = document.getElementById('admin-pass').value;
+  if(pw==="uamore2025"){adminLogged=true;document.getElementById('admin-auth').style.display='none';document.getElementById('admin-stats').style.display='block';populateAdmin();}
+  else alert("Incorrect admin password. (Hint: uamore2025)");
+}
+function populateAdmin(){
+  if(!adminLogged)return;
+  let out = "";
+  for(let p of products) out += `<li>${p.title} <span style="color:#7cf6fa;font-size:0.96em;cursor:pointer" onclick="removeProduct(${p.id})" title="Remove">[✖]</span></li>`;
+  document.getElementById('admin-products').innerHTML=out;
+}
+function removeProduct(id){products=products.filter(p=>p.id!==id);populateAdmin();renderProducts();}
+function addProductPrompt(){
+  let title = prompt("Perfume Name?");
+  if(!title)return;
+  let price = parseInt(prompt("Price?"));
+  let cat = prompt("Type (Eau de Parfum, Extrait, etc)?",CATEGORIES[0]);
+  let img = prompt("Image URL?");
+  let desc = prompt("Description?");
+  products.push({id:Date.now(), title,price,cat,img,desc});
+  populateAdmin(); renderProducts();
+}
+showSection('home'); renderProducts(); updateCartIcon();
+window.addEventListener('scroll',()=>{document.body.style.backgroundPositionY = -window.scrollY/7 + 'px';});
+</script>
+</body>
+</html>
